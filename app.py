@@ -48,3 +48,15 @@ if not st.sidebar.checkbox("Close", True, key="1"):
     st.map(modified_data)
     if st.sidebar.checkbox("Show raw data", False):
         st.write(modified_data)
+
+st.sidebar.subheader("Breakdown of airline Tweets by sentiment")
+choice = st.sidebar.multiselect("Pick airlines", ("US Airways", "United", "American", "Southwest", "Delta", "Virgin"),
+                                key=0)
+
+if len(choice) > 0:
+    choice_data = data[data.airline.isin(choice)]
+    fig_choice = px.histogram(choice_data, x="airline", y="airline_sentiment", histfunc="count",
+                              color="airline_sentiment",
+                              facet_col="airline_sentiment", labels={"airline_sentiment": "tweets"}, height=600,
+                              width=800)
+    st.plotly_chart(fig_choice)
