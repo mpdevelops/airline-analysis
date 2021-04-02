@@ -50,7 +50,7 @@ if not st.sidebar.checkbox("Toggle Display", True, key="1"):
         st.write(modified_data)
 
 st.sidebar.subheader("Breakdown of airline tweets by sentiment")
-choice = st.sidebar.multiselect("Pick airline:", ("US Airways", "United", "American", "Southwest", "Delta", "Virgin"),
+choice = st.sidebar.multiselect("Pick airline:", ("US Airways", "United", "American", "Southwest", "Delta", "Virgin America"),
                                 key=0)
 
 if len(choice) > 0:
